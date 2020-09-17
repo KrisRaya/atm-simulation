@@ -67,4 +67,29 @@ public class AtmServiceTest {
             assertEquals("Insufficient balance $100", e.getMessage());
         }
     }
+
+    @Test
+    public void shouldReturnSuccessToDoFundTransaction() throws ValidationException {
+        atmService.fundTransaction("012108", "932012", "90");
+        assertEquals(10, listAccount.getAccountInfoList().get(0).getBalance());
+        assertEquals(120, listAccount.getAccountInfoList().get(1).getBalance());
+    }
+
+    @Test
+    public void shouldReturnNullPointerExceptionWhenDestAccountIsNotFound() throws ValidationException {
+        try {
+            atmService.fundTransaction("012108", "932011", "90");
+        } catch (NullPointerException e) {
+            assertEquals("Invalid account", e.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldReturnValidationExceptionWhenSourceAccountDontHaveEnoughBalance() {
+        try {
+            atmService.fundTransaction("012108", "932012", "110");
+        } catch (ValidationException e) {
+            assertEquals("Insufficient balance $110", e.getMessage());
+        }
+    }
 }

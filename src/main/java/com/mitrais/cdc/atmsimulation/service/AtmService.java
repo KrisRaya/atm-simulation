@@ -41,4 +41,21 @@ public class AtmService {
         }
         return -1;
     }
+
+    public long fundTransaction(String accountNumber, String destAccount, String inputAmount) throws ValidationException {
+        final List<AccountInfo> accountInfoList = listAccount.getAccountInfoList();
+        final AccountInfo destAccountInfo = accountInfoList.stream()
+                .filter(account -> account.getAccountNumber().equals(destAccount))
+                .findFirst().orElseThrow(() -> new NullPointerException("Invalid account"));
+
+        final AccountInfo sourceAccountInfo = accountInfoList.stream()
+                .filter(account -> account.getAccountNumber().equals(accountNumber) &&
+                        account.getBalance() >= Integer.valueOf(inputAmount))
+                .findFirst().orElseThrow(() -> new ValidationException("Insufficient balance $" + inputAmount));
+
+        destAccountInfo.setBalance(destAccountInfo.getBalance() + Integer.valueOf(inputAmount));
+        sourceAccountInfo.setBalance(sourceAccountInfo.getBalance() - Integer.valueOf(inputAmount));
+
+        return sourceAccountInfo.getBalance();
+    }
 }

@@ -1,6 +1,6 @@
-package com.mitrais.cdc.controller;
+package com.mitrais.cdc.atmsimulation.controller;
 
-import com.mitrais.cdc.service.AtmService;
+import com.mitrais.cdc.atmsimulation.service.AtmService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

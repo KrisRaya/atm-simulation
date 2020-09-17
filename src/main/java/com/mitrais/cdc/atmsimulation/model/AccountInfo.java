@@ -1,4 +1,4 @@
-package com.mitrais.cdc.model;
+package com.mitrais.cdc.atmsimulation.model;
 
 public class AccountInfo {
     private String name;

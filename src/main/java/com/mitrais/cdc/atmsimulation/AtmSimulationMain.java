@@ -1,9 +1,9 @@
-package com.mitrais.cdc;
+package com.mitrais.cdc.atmsimulation;
 
-import com.mitrais.cdc.controller.AtmController;
-import com.mitrais.cdc.model.AccountInfo;
-import com.mitrais.cdc.model.ListAccount;
-import com.mitrais.cdc.service.AtmService;
+import com.mitrais.cdc.atmsimulation.model.AccountInfo;
+import com.mitrais.cdc.atmsimulation.controller.AtmController;
+import com.mitrais.cdc.atmsimulation.model.ListAccount;
+import com.mitrais.cdc.atmsimulation.service.AtmService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
